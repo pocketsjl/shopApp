@@ -1,0 +1,127 @@
+/* 公共样式 */
+body{
+   font-size: 14px;
+}
+ 
+ /* 左侧栏 */
+  .el-aside {
+    color: #333;
+    background: url("../imges/左侧背景图.jpg")
+  }
+  /* 标题 */
+
+  /* 主菜单 */
+  .el-menu{
+      background-color: transparent;
+      border: none;
+      width: 206px;
+  }
+  .el-menu-vertical-demo {
+      margin-left: 24px;
+  }
+
+  /* 菜单标题 */
+  .el-submenu__title{
+      color:#fff;
+      background: url("../imges/按钮背景图.jpg");
+      height: 33px;
+      line-height: 33px;
+      margin-bottom: 10px;
+      text-align:right;
+      border-radius: 4px 0 0 4px;
+  }
+  
+  /*子菜单 行高和高度 */
+  .el-submenu .el-menu-item{
+      height: 30px;
+      line-height: 30px;
+      border-radius: 4px 0 0 4px;
+      text-align: right;
+      padding: 0 20px;
+      color:#fff;
+      margin-bottom: 10px;
+
+  }
+    /* 隐藏伪类图标 箭头 */
+    .el-submenu__title i{
+        display: none
+    }
+  /* 激活样式 */
+  .el-menu-item.is-active{
+      color:#ccc;
+      font-weight: bold;
+      background-color: rgba(255, 255, 255, 0.3);
+  }
+  /* 鼠标经过和焦点的样式 */
+  .el-menu-item:hover, .el-menu-item:focus{
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  /* 自定义左侧样式 */
+  #leftTitle{
+      color: #fff;
+  }
+  #leftTitle h1,#leftTitle p{
+      text-align: right;
+      padding-right: 20px;
+  }
+  #leftTitle h1{
+    font-size: 22px;
+    font-family: "黑体";
+}
+  
+ /* ------------------------------右侧----------------------- */
+ .el-header{
+     margin:20px 0 20px 20px;
+     
+     
+    
+ }
+ .el-header h2{
+ 
+     margin: 0 0 6px 0px;
+     font-size: 22px;
+     
+
+ }
+ .el-header p{
+     margin: 0px;
+          
+ }
+
+  .el-main{
+  
+ 
+  }
+  .el-card__header{
+      background: #e9e9e9;
+  }
+  .el-card__header h3{
+    margin: 0;
+  }
+  .el-alert{
+      margin-bottom: 10px;
+  }
+
+
+  .el-footer{
+      margin:0px 20px;
+       border-top:1px solid #ccc;
+      
+  }
+  
+ 
+/* 警告框的样式 */
+.el-alert{
+    margin-bottom: 10px;
+}
+/* 主体内容 */
+/* flex伸缩布局 */
+#mainContent{
+    display: flex; /* 开启伸缩布局*/
+    flex-wrap: wrap;  /*开启换行*/
+}
+/* 三个资源元素的宽度为100% */
+#mainContent>*{
+    width: 100%;
+    max-height: 450px;
+}

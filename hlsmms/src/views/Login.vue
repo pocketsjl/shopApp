@@ -85,7 +85,7 @@ export default {
   position: absolute;
   margin: auto;
   padding: 0px;
-  background: url(./timg.jpg);
+  background: url("../assets/imges/timg.jpg");
   background-size: 100% 100%;
   z-index: 10;
 }
@@ -94,7 +94,7 @@ export default {
 }
 ._box {
   height: 100%;
-  background: url(./timg.jpg);
+  background: url("../assets/imges/左侧背景图.jpg");
   background-size: 100% 100%;
 }
 ._box:after {
