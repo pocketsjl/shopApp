@@ -32,7 +32,21 @@ export default new Router({
     {
       path:'/pwdedit',
       component:()=> import(/* webpackChunkName: "PwdEdit" */'./views/UserPedEdit.vue')
-    }
+    },
+    //分类管理路由
+    {
+      path:'/classManagement',
+      component:()=> import(/*webpackChunkName: "ClassManagement"*/'./views/ClassManagement.vue')
+    },
+    // 添加分类路由
+      {
+        path:'/addmanagement',
+        component:()=>import(/*webpackChunkName:"Addmanagement" */'./views/Addmanagement.vue')
+      },
+      {
+        path:'/goodsmanage',
+        component:()=>import(/*webpackChunkName:"Goodsmanage" */'./views/Goodsmanage.vue')
+      },
     // {
     //   path: '/about',
     //   name: 'about',

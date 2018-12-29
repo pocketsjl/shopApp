@@ -11,10 +11,43 @@
       <el-main>
         <el-card class="box-card">
           <div slot="header" class="clearfix">
-            <h3>添加用户</h3>
+            <h3>添加管理账号</h3>
+            
           </div> 
             <div class="text item">
              <!-- 模板的内容 -->
+                 <el-form
+            :model="ruleForm2"
+            status-icon
+            :rules="rules2"
+            ref="ruleForm2"
+            label-width="100px"         
+            class="demo-ruleForm"
+            label-position="top"
+          >
+            <!-- 用户名 -->
+            <el-form-item label="用户名" prop="username">
+              <el-input v-model.number="ruleForm2.username"></el-input>
+            </el-form-item>
+            <!-- 密码 -->
+            <el-form-item label="密码" prop="pass">
+              <el-input type="password" v-model="ruleForm2.pass" autocomplete="off"></el-input>
+            </el-form-item>
+             <!-- 确认密码 -->
+            <el-form-item label="确认密码" prop="checkPass">
+            <el-input type="password" v-model="ruleForm2.checkPass" autocomplete="off"></el-input>
+             </el-form-item>
+              <el-form-item label="添加账号" prop="usergroup">
+              <el-select v-model="ruleForm2.usergroup" placeholder="请选择用户组">
+                <el-option label="超级账号" value="超级账号"></el-option>
+                <el-option label="普通账号" value="普通账号"></el-option>
+              </el-select>
+            </el-form-item>  
+             <el-form-item>
+              <el-button type="primary" @click="submitForm('ruleForm2')">添加</el-button>
+              
+            </el-form-item> 
+          </el-form>
           </div>
         </el-card>
       </el-main>
@@ -36,13 +69,76 @@ export default {
      LeftMenu,
      rightTop,
      rightButton
- }
+ },
+  data() {
+    var validatepassword = (rule,value,callback)=>{
+      if(value !== this.ruleForm2.pass){
+        callback(new Error('两次输入密码不一致'));
+      }else{
+        callback();
+      }
+    };
+      return{
+      //数据对象
+      ruleForm2: {
+        username: "",
+        pass: "",
+        checkPass:"",
+        usergroup:"",
+
+      },
+      rules2: {
+        username: [
+          { required: true, message: "用户名不能为空", trigger: "blur" },
+          { min: 6, max: 18, message: "长度在 6 到 18 个字符", trigger: "blur" }
+        ],
+        pass: [
+          { required: true, message: "密码不能为空", trigger: "blur" },
+          { min: 6, max: 18, message: "长度在 6 到 18 个字符", trigger: "blur" }
+        ],
+        checkPass:[
+          {required: true,message:"请输入确认密码",trigger:"blur"},
+          { min: 6, max: 18, message: "长度在 6 到 18 个字符", trigger: "blur" }
+        ],
+        usergroup:[
+          {required:true,message:"change",message:"请输入用户组"}
+        ]
+      }
+    };
+  },
+  methods: {
+    submitForm(formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          alert("登录成功！");
+          this.$router.push("/");
+        } else {
+          console.log("登录失败!!");
+          return false;
+        }
+      });
+    },
+    //重置表单的方法
+    resetForm(formName) {
+      this.$refs[formName].resetFields();
+    }
+  }
     
-}
+};
 </script>
 
 <style>
-
+ .tianJia{
+  font-size: 12px;
+  text-align: center
+} 
+.tianJia span{
+  margin: 0 10px;
+}
+.el-card__header h3{
+  width: 300px;
+ font-size: 24px;
+}
 </style>
 
 
