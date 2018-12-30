@@ -110,8 +110,40 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert("登录成功！");
-          this.$router.push("/");
+          //alert（表单验证成功）
+          //发起ajax请求后去后端数据添加数据用户
+          //1获取用户数据
+          console.log(this.ruleForm2);
+          //使用axios发送请求后到后端api：
+          this.axios.post("http://127.0.0.1:9090/user/useradd",
+          this.qs.stringify(this.ruleForm2)//使用qs参数处理post发送
+          ).then(result=>{
+            console.log("服务器返回成功的结果",result); 
+            if(result.data.isOk){
+              //添加成功
+              this.$message({
+                message: result.data.msg,
+              type:'success' 
+              });
+              setTimeout(()=>{
+                this.$router.push("/userlist");
+              },1000);
+             
+
+            }else{
+              //添加失败
+              this.$message.error(result.data.msg);
+
+            }
+          }).catch(err=>{
+            console.log("服务器返回错误的信息",err);
+            
+          })
+
+          // 根据返回结果处理业务逻辑
+          
+
+       
         } else {
           console.log("登录失败!!");
           return false;
